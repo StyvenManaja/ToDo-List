@@ -37,6 +37,12 @@ app.get('/', authentication, (req, res) => {
     res.json({ message : `Welcome back ${req.username}` });
 })
 
+app.get('/tasks', authentication, endpoints.getAllTasks);
+
+app.post('/add-task', authentication, endpoints.createTask);
+app.put('/update-task/:id', authentication, endpoints.updateTask);
+app.delete('/delete-task/:id', authentication, endpoints.deleteTask);
+
 app.post('/signup', endpoints.registerUser);
 app.post('/login', endpoints.loginUser);
 app.post('/refresh', endpoints.refreshToken);

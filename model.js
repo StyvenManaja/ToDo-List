@@ -26,10 +26,31 @@ const tokenSchema = new mongoose.Schema({
     }
 })
 
+const taskSchema = new mongoose.Schema({
+    title : {
+        type : String,
+        required : true
+    },
+    description : {
+        type : String,
+        required : true
+    },
+    expirationDate : {
+        type : Date,
+        required : true
+    },
+    user : {
+        type : String,
+        required : true
+    }
+})
+
 const User = mongoose.model('users', userSchema);
 const Token = mongoose.model('token', tokenSchema);
+const Task = mongoose.model('tasks', taskSchema);
 
 module.exports = {
     User,
-    Token
+    Token,
+    Task
 }

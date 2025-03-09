@@ -3,6 +3,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 const { User } = require('./model');
 const { Token } = require('./model');
+const { Task } = require('./model');
 
 mongoose.connect(process.env.db_url);
 
@@ -69,10 +70,72 @@ const deleteToken = async (token) => {
     }
 }
 
+const createTask = async (taskData) => {
+    try {
+        let task = await Task.create({
+            title : taskData.title,
+            description : taskData.description,
+            expirationDate : taskData.expirationDate,
+            user : taskData.user
+        });
+
+        return task;
+    } catch (error) {
+        console.log('Error creating task : ', error);
+        return null;
+    }
+}
+
+const printTask = async (username) => {
+    try {
+        let tasks = await Task.find({ user : username });
+        return tasks;
+    } catch (error) {
+        console.log('Error on finding all tasks : ', error);
+        return null;
+    }
+}
+
+const updateTask = async (updatedTaskData) => {
+    try {
+        let updatedTask = await Task.updateOne({ 
+            user : updatedTaskData.user,
+            id : updatedTaskData.id,
+            $set : {
+                title : updatedTaskData.title,
+                description : updatedTaskData.description
+            }
+        })
+
+        return updatedTask;
+    } catch (error) {
+        console.log('Error updating the task : ', error);
+        return null;
+    }
+}
+
+const deleteTask = async (id, user) => {
+    try {
+        await Task.deleteOne({ 
+            user : user,
+            id : id
+        })
+
+        return true;
+    } catch (error) {
+        console.log('Error deleting task or task already deleted : ', error);
+        return false;
+    }
+}
+
 module.exports = {
     registerUser,
     findUser,
     addToken,
     findToken,
-    deleteToken
+    deleteToken,
+    createTask,
+    printTask,
+    updateTask,
+    deleteTask
 }
