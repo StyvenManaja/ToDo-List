@@ -1,79 +1,79 @@
 # 📋 To-Do List API
 
 ## 🚀 Description
-Cette API permet de gérer une liste de tâches (**To-Do List**) avec les opérations CRUD (Create, Read, Update, Delete). Elle est construite avec **Node.js, Express.js et MongoDB**.
+This API allows managing a **To-Do List** with CRUD operations (Create, Read, Update, Delete). It is built with **Node.js, Express.js, and MongoDB**.
 
-## 📌 Fonctionnalités
-✅ Ajouter une nouvelle tâche
-✅ Récupérer toutes les tâches
-✅ Récupérer une tâche spécifique
-✅ Mettre à jour une tâche
-✅ Supprimer une tâche
+## 📌 Features
+✅ Add a new task
+✅ Retrieve all tasks
+✅ Retrieve a specific task
+✅ Update a task
+✅ Delete a task
 
-## 🛠️ Technologies utilisées
-- **🟢 Node.js** - Environnement d'exécution JavaScript
-- **⚡ Express.js** - Framework web pour Node.js
-- **🗄️ MongoDB** - Base de données NoSQL
-- **🔗 Mongoose** - ODM pour MongoDB
+## 🛠️ Technologies Used
+- **🟢 Node.js** - JavaScript runtime environment
+- **⚡ Express.js** - Web framework for Node.js
+- **🗄️ MongoDB** - NoSQL database
+- **🔗 Mongoose** - ODM for MongoDB
 
 ## 📦 Installation
-### 📥 Cloner le repo
+### 📥 Clone the repository
 ```bash
 git clone https://github.com/StyvenManaja/ToDo-List.git
 cd ToDo-List
 ```
 
-### 📌 Installer les dépendances
+### 📌 Install dependencies
 ```bash
 npm install
 ```
 
-### 🛠️ Configurer la base de données
-Crée un fichier `.env` à la racine du projet et ajoute :
+### 🛠️ Configure the database
+Create a `.env` file at the root of the project and add:
 ```env
 MONGO_URI=your_mongodb_connection_string
 PORT=5000
 ```
 
-### ▶️ Démarrer le serveur
+### ▶️ Start the server
 ```bash
 npm start
 ```
 
-## 📡 Routes de l'API
-| Méthode | Endpoint | Description |
+## 📡 API Routes
+| Method | Endpoint | Description |
 |---------|---------|-------------|
-| **📝 POST** | `/tasks` | Ajouter une nouvelle tâche |
-| **📂 GET** | `/tasks` | Récupérer toutes les tâches |
-| **🔍 GET** | `/tasks/:id` | Récupérer une tâche spécifique |
-| **🛠 PUT** | `/tasks/:id` | Mettre à jour une tâche |
-| **🗑 DELETE** | `/tasks/:id` | Supprimer une tâche |
+| **📝 POST** | `/tasks` | Add a new task |
+| **📂 GET** | `/tasks` | Retrieve all tasks |
+| **🔍 GET** | `/tasks/:id` | Retrieve a specific task |
+| **🛠 PUT** | `/tasks/:id` | Update a task |
+| **🗑 DELETE** | `/tasks/:id` | Delete a task |
 
-## 🛠 Exemples d'utilisation
-### ➕ Ajouter une tâche
+## 🛠 Usage Examples
+### ➕ Add a Task
 ```json
 POST /tasks
 {
-  "title": "Apprendre Node.js",
+  "title": "Learn Node.js",
   "completed": false
 }
 ```
 
-### 📂 Récupérer toutes les tâches
+### 📂 Retrieve All Tasks
 ```json
 GET /tasks
 [
   {
     "_id": "65a1b2c3d4e5f67890",
-    "title": "Apprendre Node.js",
+    "title": "Learn Node.js",
     "completed": false
   }
 ]
 ```
 
-## 📜 Licence
-Ce projet est sous licence **MIT**. Tu peux l'utiliser librement. 🚀
+## 📜 License
+This project is under the **MIT** license. Feel free to use it. 🚀
 
 ---
-🔥 **Créé par [StyvenManaja](https://github.com/StyvenManaja)** 🔥
+🔥 **Created by [StyvenManaja](https://github.com/StyvenManaja)** 🔥
 
