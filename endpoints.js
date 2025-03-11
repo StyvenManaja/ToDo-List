@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
     try {
         let { username, email, password } = req.body;
         if(!username || !email || !password) {
-            return res.status(400).json({ message : 'All fieds are required' });
+            return res.status(400).json({ message : 'All fields are required' });
         }
 
         let hashedPassword = await bcrypt.hash(password, 10);
@@ -56,7 +56,7 @@ const loginUser = async (req, res) => {
         let refreshToken = jwt.sign({ username : user.username}, process.env.REFRESH_TOKEN_SECRET_KEY, { expiresIn : '6h' });
         let tokenSaved = await dataManagement.addToken(refreshToken);
         if(!tokenSaved) {
-            return res.status(401);
+            return res.status(401).json({ message: 'Failed to save refresh token' });
         }
     
         res.json({ 
@@ -151,7 +151,7 @@ const getAllTasks = async (req, res) => {
         let tasks = await dataManagement.printTask(req.username);
         if(!tasks) {
             return res.status(403).json({ message : 'Error on finding task' });
-        }   else if(tasks[0] == null) {
+        }   else if(tasks.length === 0) {
             return res.status(403).json({ message : 'No task found' });
         }
 
